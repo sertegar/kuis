@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuis HOTS TKA DKV Kelas 12</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf9f5;--fg:#17171a;--card:#fff;--line:#dcdad2;--mute:#6b6a64;--c:#00aeef;--m:#ec008c;--y:#ffd500;--ok:#0a8f4e;--no:#d6204a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141417;--fg:#f1f0ea;--card:#1f1f24;--line:#33333a;--mute:#9d9c95;--ok:#3ddc8a;--no:#ff6b8b}}
+:root[data-theme="dark"]{--bg:#141417;--fg:#f1f0ea;--card:#1f1f24;--line:#33333a;--mute:#9d9c95;--ok:#3ddc8a;--no:#ff6b8b}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:560px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:clamp(2rem,9vw,2.8rem);line-height:1.05;margin:8px 0 12px;font-weight:800;letter-spacing:-.02em}
+.cmyk{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:18px}
+.cmyk i{flex:1}.cmyk i:nth-child(1){background:var(--c)}.cmyk i:nth-child(2){background:var(--m)}.cmyk i:nth-child(3){background:var(--y)}.cmyk i:nth-child(4){background:var(--fg)}
+p{margin:0 0 12px}.mute{color:var(--mute);font-size:.92rem}
+label{display:block;font-weight:600;margin:18px 0 6px}
+input[type=text]{width:100%;padding:14px;font:inherit;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)}
+input[type=text]:focus,button:focus-visible{outline:3px solid var(--m);outline-offset:2px}
+.btn{font:inherit;font-weight:600;border:0;border-radius:10px;padding:14px 18px;background:var(--fg);color:var(--bg);cursor:pointer;width:100%}
+.btn.alt{background:transparent;color:var(--fg);border:2px solid var(--line)}
+.btn:disabled{opacity:.35}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+.bar{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin:6px 0 14px}
+.bar button{height:12px;border:0;padding:0;border-radius:3px;background:var(--line);cursor:pointer}
+.bar button.cur{outline:2px solid var(--fg);outline-offset:1px}
+.meta{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mute)}
+.q{font-size:1.12rem;font-weight:600;line-height:1.45;margin:10px 0 14px}
+.opt{display:flex;gap:12px;width:100%;text-align:left;font:inherit;padding:13px 14px;margin-bottom:9px;background:var(--card);color:var(--fg);border:2px solid var(--line);border-radius:12px;cursor:pointer}
+.opt b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.85rem}
+.opt.sel{border-color:var(--m)}.opt.sel b{background:var(--m);color:#fff}
+.opt.right{border-color:var(--ok)}.opt.right b{background:var(--ok);color:#000}
+.opt.wrong{border-color:var(--no)}.opt.wrong b{background:var(--no);color:#000}
+.score{font-size:4.5rem;font-weight:800;line-height:1;margin:6px 0}
+.rv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.rv .e{font-size:.92rem;color:var(--mute);border-left:4px solid var(--y);padding-left:10px;margin-top:10px}
+.rv .opt{cursor:default;padding:9px 12px;margin-bottom:6px;font-size:.95rem}
+.tag{font-weight:600;font-size:.85rem}
+.hide{display:none}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const Q=[
+{q:"Poster konser memuat judul, tanggal, lokasi, dan sponsor dengan ukuran huruf yang sama sehingga audiens bingung harus membaca dari mana. Perbaikan yang paling tepat adalah...",o:["Menambah jumlah warna agar lebih ramai","Menerapkan hierarki visual lewat perbedaan ukuran, ketebalan, dan kontras","Memperkecil semua teks agar muat","Memberi bingkai pada setiap teks"],a:1,e:"Hierarki visual mengarahkan alur baca: informasi terpenting dibuat paling dominan, yang lain mengikuti."},
+{q:"Brosur siap cetak offset ternyata warnanya lebih pudar dibanding tampilan di layar. Kesalahan yang paling mungkin terjadi adalah...",o:["Font belum di-outline","Ukuran kertas tidak sesuai","Dokumen menggunakan format PNG","Dokumen dikerjakan dalam mode warna RGB, bukan CMYK"],a:3,e:"RGB punya gamut lebih luas daripada CMYK. Untuk cetak, dokumen harus memakai CMYK agar hasil mendekati layar."},
+{q:"Logo kafe akan dipakai pada stempel kecil, baliho besar, dan bordir seragam tanpa pecah. Pendekatan teknis terbaik adalah...",o:["Membuat logo sederhana dalam format vektor","Membuat logo raster 300 dpi dengan gradasi halus","Memakai foto produk sebagai logo","Membuat logo raster dengan banyak efek bayangan"],a:0,e:"Vektor bisa diperbesar atau diperkecil tanpa pecah, dan bentuk sederhana mudah diterapkan di berbagai media."},
+{q:"Fotografer produk memotret di ruangan redup tanpa tripod dan ingin foto tajam dengan noise minim. Kompromi paling logis adalah...",o:["Aperture f/22 dan ISO 100","Shutter 1/4 detik dan ISO 100","Aperture lebar (misal f/1.8), shutter minimal 1/60 detik, ISO dinaikkan secukupnya","Aperture f/16 dan ISO 6400"],a:2,e:"Aperture lebar memasukkan banyak cahaya, shutter cepat mencegah goyang, dan ISO dinaikkan seperlunya agar noise terkendali."},
+{q:"Brand produk organik ingin tampil tenang, alami, dan terpercaya. Palet warna yang paling sesuai adalah...",o:["Merah dan kuning terang berkontras tinggi","Hijau lembut, krem, dan cokelat tanah","Magenta neon dan cyan","Hitam pekat dan merah menyala"],a:1,e:"Warna earth tone dan hijau lembut memunculkan asosiasi alam dan ketenangan, sesuai karakter brand."},
+{q:"Teks paragraf panjang pada aplikasi baca terasa melelahkan. Perbaikan tipografi yang paling efektif adalah...",o:["Panjang baris 45 sampai 75 karakter, line-height sekitar 1,5, huruf yang mudah dibaca","Semua teks dibuat huruf kapital","Teks dibuat rata kiri-kanan dengan huruf kecil","Memakai font script dekoratif"],a:0,e:"Keterbacaan ditentukan panjang baris, spasi antarbaris, dan pemilihan huruf yang jelas, bukan efek dekoratif."},
+{q:"Tombol \"Bayar\" pada aplikasi sering terlewat oleh pengguna. Evaluasi UI/UX yang paling tepat adalah...",o:["Memperkecil tombol agar tampilan rapi","Menyamakan warnanya dengan latar","Memindahkannya ke menu tersembunyi","Meningkatkan kontras dan ukuran tombol, serta menempatkannya pada alur yang mudah dilihat"],a:3,e:"Call to action harus menonjol dan berada di jalur perhatian pengguna agar mudah ditemukan."},
+{q:"Kemasan camilan baru harus menarik perhatian di rak toko yang penuh pesaing. Langkah strategis yang paling tepat adalah...",o:["Meniru kemasan kompetitor terlaris","Memuat informasi sebanyak mungkin di depan kemasan","Meriset kompetitor lalu membedakan lewat warna, bentuk, dan ilustrasi khas yang tetap terbaca jelas","Memakai warna pucat agar terlihat elegan"],a:2,e:"Diferensiasi berbasis riset membuat produk mudah dikenali tanpa kehilangan keterbacaan informasi."},
+{q:"Setelah finishing spanduk, teks di bagian tepi ikut terpotong. Penyebab dan solusi yang tepat adalah...",o:["Resolusi kurang; naikkan resolusi","Teks berada di luar area aman; beri bleed dan letakkan teks penting di dalam safe margin","Format salah; ubah ke PNG","Kanvas terlalu besar; perkecil kanvas"],a:1,e:"Pemotongan finishing punya toleransi. Bleed melindungi latar, safe margin melindungi teks dan elemen penting."},
+{q:"Iklan video 15 detik untuk media sosial sering di-skip pada 3 detik pertama. Strategi yang paling tepat adalah...",o:["Hook visual kuat di awal, pesan inti singkat, dan teks tetap terbaca tanpa suara","Membuka dengan animasi logo selama 8 detik","Hanya memakai musik tanpa visual menarik","Menaruh semua informasi di detik terakhir"],a:0,e:"Perhatian penonton ditentukan detik awal. Banyak orang menonton tanpa suara, jadi visual dan teks harus bisa berdiri sendiri."},
+{q:"Animasi bola memantul terlihat kaku dan tidak hidup. Prinsip animasi yang perlu diterapkan adalah...",o:["Staging","Appeal","Squash and stretch serta slow in dan slow out","Solid drawing"],a:2,e:"Perubahan bentuk saat memantul dan percepatan yang bertahap memberi kesan berat, elastisitas, dan gerak alami."},
+{q:"Klien meminta memakai foto dari hasil pencarian Google tanpa izin untuk iklan komersial. Sikap profesional yang tepat adalah...",o:["Memakainya saja karena ada di internet","Mengeditnya 30% agar berbeda","Mencantumkan tulisan \"sumber: Google\"","Memakai foto berlisensi atau buatan sendiri, atau meminta izin tertulis dari pemilik hak cipta"],a:3,e:"Penggunaan komersial membutuhkan izin atau lisensi. Mengedit atau mencantumkan sumber tidak menggantikannya."},
+{q:"Studio kreatif memiliki portofolio bagus tetapi klien baru sedikit. Langkah strategis yang paling tepat adalah...",o:["Menurunkan harga secara drastis","Mengkurasi portofolio sesuai target klien, menampilkan studi kasus beserta hasilnya, lalu mempromosikannya di kanal yang tepat","Menunggu klien datang sendiri","Menyalin gaya studio yang sedang ramai"],a:1,e:"Klien membutuhkan bukti bahwa studio memecahkan masalah mereka. Kurasi dan studi kasus lebih meyakinkan daripada sekadar banyaknya karya."},
+{q:"Storyboard dibuat sebelum produksi iklan minuman. Fungsi utamanya adalah...",o:["Memvisualisasikan alur, framing, dan durasi tiap adegan agar tim punya persepsi yang sama dan produksi lebih efisien","Menjadi hasil akhir yang ditayangkan","Menggantikan naskah sepenuhnya","Sekadar hiasan dokumen presentasi"],a:0,e:"Storyboard adalah alat perencanaan visual yang mengurangi salah paham dan biaya revisi saat produksi."},
+{q:"Pemotretan potret di luar ruangan pada siang hari menghasilkan bayangan keras di wajah. Solusi yang paling tepat adalah...",o:["Memakai flash langsung tanpa diffuser","Menaikkan ISO setinggi mungkin","Pindah ke tempat teduh terbuka atau memakai reflektor dan diffuser untuk melembutkan cahaya","Memotret dari sudut rendah"],a:2,e:"Cahaya yang disebar atau dipantulkan menurunkan kontras bayangan sehingga wajah terlihat lebih lembut."},
+{q:"Desainer membuat website untuk pengguna lansia. Keputusan desain yang paling inklusif adalah...",o:["Teks kecil berwarna abu muda agar minimalis","Ikon tanpa label agar ringkas","Animasi banyak agar menarik","Teks besar, kontras tinggi, ikon berlabel, dan area sentuh yang luas"],a:3,e:"Aksesibilitas berarti menyesuaikan dengan keterbatasan penglihatan dan motorik pengguna, bukan sekadar gaya visual."},
+{q:"Logo dengan ikon rumit dan teks kecil menjadi tidak terbaca ketika diperkecil di profil media sosial. Prinsip logo yang dilanggar adalah...",o:["Pemilihan warna","Kesederhanaan dan skalabilitas","Orisinalitas","Penggunaan gradasi"],a:1,e:"Logo yang baik tetap jelas pada ukuran kecil maupun besar, sehingga bentuknya harus sederhana."},
+{q:"Sebuah brand ingin feed Instagram-nya tampil konsisten walau dikerjakan beberapa orang. Hal yang paling mendukung adalah...",o:["Brand guideline berisi palet, tipografi, grid, dan gaya foto","Setiap postingan dibuat dengan gaya berbeda","Mengikuti tren harian apa pun yang viral","Hanya menaruh logo di setiap postingan"],a:0,e:"Brand guideline menjadi acuan bersama sehingga identitas visual tetap seragam meskipun pembuatnya berbeda."},
+{q:"Foto berukuran 800 x 600 piksel akan dicetak pada ukuran 40 x 60 cm. Kesimpulan dan tindakan yang tepat adalah...",o:["Tidak masalah, langsung cetak","Naikkan kontras agar tampak tajam","Resolusi terlalu rendah dan hasil akan pecah; gunakan file asli beresolusi tinggi atau lakukan pemotretan ulang","Ubah menjadi hitam putih"],a:2,e:"Cetak besar membutuhkan piksel yang cukup. Memperbesar file kecil menambah ukuran, bukan detail."},
+{q:"Seorang sutradara ingin adegan terasa tegang dan tokoh terlihat terkucil di dalam ruangan luas. Pilihan visual yang paling mendukung adalah...",o:["Close up dengan pencahayaan merata dan warna cerah","Medium shot dengan banyak tokoh pendukung","Warna pastel dengan musik ceria","Wide shot dengan tokoh kecil di dalam frame, ruang kosong luas, dan pencahayaan low-key"],a:3,e:"Komposisi wide shot dengan ruang kosong dan cahaya gelap menekankan rasa terasing dan tegang."},
+{q:"Setelah bekerja berjam-jam dengan komputer dan peralatan listrik studio, tindakan K3 yang paling tepat adalah...",o:["Terus bekerja sampai selesai agar efisien","Mengatur ergonomi, istirahat berkala, merapikan kabel, dan menangani peralatan listrik sesuai prosedur","Menaruh kabel melintang agar mudah dijangkau","Mematikan lampu ruangan agar layar lebih jelas"],a:1,e:"K3 mencakup ergonomi dan keamanan alat. Istirahat berkala dan kabel yang rapi mencegah cedera maupun kecelakaan."}
+];
+const L="ABCD",app=document.getElementById("app");
+let name="",i=0,ans=Array(Q.length).fill(-1),done=false;
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const strip='<div class="cmyk"><i></i><i></i><i></i><i></i></div>';
+const COL=["var(--c)","var(--m)","var(--y)","var(--fg)"];
+const answered=()=>ans.filter(x=>x>=0).length;
+function start(){
+  app.innerHTML=strip+`<h1>Kuis HOTS TKA DKV</h1>
+  <p>Persiapan TKA SMK Desain Komunikasi Visual kelas 12.</p>
+  <p class="mute">20 soal pilihan ganda. Soal menuntut analisis dan pengambilan keputusan, bukan hafalan. Jawaban bisa diubah sebelum dikumpulkan.</p>
+  <label for="n">Nama lengkap</label>
+  <input id="n" type="text" autocomplete="name" placeholder="Tulis namamu di sini">
+  <div class="row"><button class="btn" id="go" disabled>Mulai kuis</button></div>`;
+  const n=document.getElementById("n"),g=document.getElementById("go");
+  n.oninput=()=>{g.disabled=n.value.trim().length<2};
+  g.onclick=()=>{name=n.value.trim();i=0;quiz()};
+  n.onkeydown=e=>{if(e.key==="Enter"&&!g.disabled)g.click()};
+}
+function quiz(){
+  const q=Q[i];
+  const bar=Q.map((_,k)=>`<button aria-label="Soal ${k+1}" data-k="${k}" class="${k===i?"cur":""}" style="${ans[k]>=0?"background:"+COL[k%4]:""}"></button>`).join("");
+  app.innerHTML=strip+`<div class="meta"><span>${esc(name)}</span><span>Terjawab ${answered()}/${Q.length}</span></div>
+  <div class="bar">${bar}</div>
+  <div class="meta"><span>Soal ${i+1} dari ${Q.length}</span></div>
+  <p class="q">${q.q}</p>
+  ${q.o.map((t,k)=>`<button class="opt ${ans[i]===k?"sel":""}" data-o="${k}"><b>${L[k]}</b><span>${t}</span></button>`).join("")}
+  <div class="row"><button class="btn alt" id="pv" ${i===0?"disabled":""}>Sebelumnya</button>
+  ${i<Q.length-1?'<button class="btn" id="nx">Berikutnya</button>':'<button class="btn" id="fin">Kumpulkan</button>'}</div>`;
+  app.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ans[i]=+b.dataset.o;quiz()});
+  app.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{i=+b.dataset.k;quiz()});
+  document.getElementById("pv").onclick=()=>{i--;quiz();scrollTo(0,0)};
+  const nx=document.getElementById("nx");if(nx)nx.onclick=()=>{i++;quiz();scrollTo(0,0)};
+  const f=document.getElementById("fin");if(f)f.onclick=()=>{
+    const left=Q.length-answered();
+    if(left>0&&!confirm(left+" soal belum dijawab. Tetap kumpulkan?"))return;
+    result();scrollTo(0,0)};
+}
+function result(){
+  const s=ans.reduce((t,x,k)=>t+(x===Q[k].a?1:0),0),nilai=s*5;
+  const msg=nilai>=80?"Kamu sudah siap. Pertahankan dan tetap latihan.":nilai>=60?"Cukup baik. Pelajari lagi soal yang salah di bawah.":"Masih perlu belajar. Baca pembahasan di bawah lalu coba lagi.";
+  const rv=Q.map((q,k)=>{
+    const ok=ans[k]===q.a;
+    return `<div class="rv"><span class="tag" style="color:var(${ok?"--ok":"--no"})">${ok?"Benar":ans[k]<0?"Tidak dijawab":"Salah"}</span> &middot; Soal ${k+1}
+    <p class="q" style="font-size:1rem;margin:6px 0 10px">${q.q}</p>
+    ${q.o.map((t,j)=>`<div class="opt ${j===q.a?"right":j===ans[k]?"wrong":""}"><b>${L[j]}</b><span>${t}</span></div>`).join("")}
+    <div class="e">${q.e}</div></div>`}).join("");
+  app.innerHTML=strip+`<p class="mute">${esc(name)}</p><h1>Hasil kuis</h1>
+  <div class="score">${nilai}</div>
+  <p><b>${s} dari ${Q.length}</b> soal benar. ${msg}</p>
+  <div class="row"><button class="btn" id="cp">Salin hasil</button><button class="btn alt" id="rt">Ulangi</button></div>
+  <p class="mute" id="cm" style="margin-top:10px">Tunjukkan layar ini atau kirim hasil salinan ke gurumu.</p>
+  <h2 style="margin:26px 0 12px;font-size:1.3rem">Pembahasan</h2>${rv}`;
+  document.getElementById("rt").onclick=()=>{ans.fill(-1);i=0;start()};
+  document.getElementById("cp").onclick=async()=>{
+    const t=`Kuis HOTS TKA DKV\nNama: ${name}\nNilai: ${nilai} (${s}/${Q.length} benar)\nJawaban: ${ans.map((x,k)=>(k+1)+(x>=0?L[x]:"-")).join(" ")}`;
+    try{await navigator.clipboard.writeText(t);document.getElementById("cm").textContent="Hasil tersalin. Tempel di chat gurumu."}
+    catch(e){document.getElementById("cm").textContent="Gagal menyalin. Screenshot layar ini saja."}
+  };
+}
+start();
+</script>
+</body>
+</html>
