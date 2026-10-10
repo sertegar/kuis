@@ -42,6 +42,7 @@ input[type=text]:focus,button:focus-visible{outline:3px solid var(--m);outline-o
 .tag{font-weight:600;font-size:.85rem}
 .hide{display:none}
 .chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.chip{display:flex;justify-content:space-between;padding:9px 12px;border:2px solid var(--line);border-radius:10px;font-size:.95rem}.chip.ok{border-color:var(--ok)}.chip.no{border-color:var(--no)}
+.pb{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin:8px 0 12px}.pb i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m),var(--y));border-radius:5px;transition:width .25s}
 </style>
 </head>
 <body>
@@ -123,16 +124,15 @@ function start(){
 }
 function quiz(){
   const q=Q[ord[i]],p=perm[i];
-  const bar=Q.map((_,k)=>`<button aria-label="Soal ${k+1}" data-k="${k}" class="${k===i?"cur":""}" style="${ans[k]>=0?"background:"+COL[k%4]:""}"></button>`).join("");
+  const pct=Math.round(answered()/N*100);
   app.innerHTML=strip+`<div class="meta"><span>${esc(name)}</span><span>Terjawab ${answered()}/${N}</span></div>
-  <div class="bar">${bar}</div>
+  <div class="pb" role="progressbar" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="${answered()}"><i style="width:${pct}%"></i></div>
   <div class="meta"><span>Soal ${i+1} dari ${N}</span></div>
   <p class="q">${q.q}</p>
   ${p.map((oi,k)=>`<button class="opt ${ans[i]===k?"sel":""}" data-o="${k}"><b>${L[k]}</b><span>${q.o[oi]}</span></button>`).join("")}
   <div class="row"><button class="btn alt" id="pv" ${i===0?"disabled":""}>Sebelumnya</button>
   ${i<N-1?'<button class="btn" id="nx">Berikutnya</button>':'<button class="btn" id="fin">Kumpulkan</button>'}</div>`;
   app.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ans[i]=+b.dataset.o;quiz()});
-  app.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{i=+b.dataset.k;quiz();scrollTo(0,0)});
   document.getElementById("pv").onclick=()=>{i--;quiz();scrollTo(0,0)};
   const nx=document.getElementById("nx");if(nx)nx.onclick=()=>{i++;quiz();scrollTo(0,0)};
   const f=document.getElementById("fin");if(f)f.onclick=()=>{
