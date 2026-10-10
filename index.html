@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kuis HOTS DKV: Teori Warna dan Filosofi Logo</title>
+<title>Kuis HOTS DKV 50 Soal: Teori Warna dan Filosofi Logo</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#faf9f5;--fg:#17171a;--card:#fff;--line:#dcdad2;--mute:#6b6a64;--c:#00aeef;--m:#ec008c;--y:#ffd500;--ok:#0a8f4e;--no:#d6204a;
@@ -25,8 +25,8 @@ input[type=text]:focus,button:focus-visible{outline:3px solid var(--m);outline-o
 .btn.alt{background:transparent;color:var(--fg);border:2px solid var(--line)}
 .btn:disabled{opacity:.35}
 .row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
-.bar{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;margin:6px 0 14px}
-.bar button{height:12px;border:0;padding:0;border-radius:3px;background:var(--line);cursor:pointer}
+.bar{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:6px 0 14px}
+.bar button{height:16px;border:0;padding:0;border-radius:3px;background:var(--line);cursor:pointer}
 .bar button.cur{outline:2px solid var(--fg);outline-offset:1px}
 .meta{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mute)}
 .q{font-size:1.12rem;font-weight:600;line-height:1.45;margin:10px 0 14px}
@@ -41,88 +41,119 @@ input[type=text]:focus,button:focus-visible{outline:3px solid var(--m);outline-o
 .rv .opt{cursor:default;padding:9px 12px;margin-bottom:6px;font-size:.95rem}
 .tag{font-weight:600;font-size:.85rem}
 .hide{display:none}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.chip{display:flex;justify-content:space-between;padding:9px 12px;border:2px solid var(--line);border-radius:10px;font-size:.95rem}.chip.ok{border-color:var(--ok)}.chip.no{border-color:var(--no)}
 </style>
 </head>
 <body>
 <main id="app"></main>
 <script>
 const Q=[
-{q:"Desainer ingin poster dengan kontras kuat agar elemen utamanya langsung menonjol. Pasangan warna yang paling tepat adalah...",o:["Biru dan hijau","Biru dan oranye","Merah dan magenta","Kuning dan hijau kekuningan"],a:1,e:"Biru dan oranye berseberangan di roda warna (komplementer), sehingga menghasilkan kontras paling kuat."},
-{q:"Brand spa ingin tampilan yang harmonis, menenangkan, dan tidak mencolok. Skema warna yang paling sesuai adalah...",o:["Triadik merah, kuning, biru dengan saturasi penuh","Komplementer merah dan hijau yang jenuh","Analogus dengan saturasi lembut, misalnya hijau, hijau kebiruan, dan biru","Hitam putih dengan aksen neon"],a:2,e:"Warna yang bersebelahan di roda warna terasa selaras, dan saturasi lembut memberi kesan tenang."},
-{q:"Warna di layar HP tampak lebih cerah dan hidup daripada hasil cetaknya. Penjelasan teorinya adalah...",o:["Layar memancarkan cahaya (RGB, aditif), sedangkan cetak memantulkan cahaya dan menyerap sebagian (CMYK, subtraktif)","Kertas cetak selalu salah kalibrasi","Layar memakai tinta lebih banyak","Warna cetak tidak punya hue"],a:0,e:"Gamut RGB lebih luas daripada CMYK. Karena itu warna neon dan sangat jenuh sulit direproduksi di media cetak."},
-{q:"Pada model HSB, desainer menurunkan saturation sebuah warna tanpa mengubah hue dan brightness. Hasilnya adalah...",o:["Warna menjadi lebih gelap","Warna berganti menjadi hue lain","Warna berubah menjadi putih","Warna tampak lebih pudar mendekati abu-abu, tetapi hue-nya tetap sama"],a:3,e:"Saturasi menunjukkan kemurnian warna. Semakin rendah, semakin mendekati abu-abu."},
-{q:"Teks abu muda pada latar putih sulit dibaca. Solusi yang paling tepat menurut prinsip kontras dan aksesibilitas adalah...",o:["Menaikkan kontras luminansi teks terhadap latar (rasio minimal sekitar 4,5 banding 1)","Mengganti hue teks menjadi merah dengan kecerahan yang sama","Menambah efek bayangan tipis","Memperkecil ukuran teks"],a:0,e:"Keterbacaan ditentukan perbedaan terang-gelap (luminansi), bukan sekadar perbedaan hue."},
-{q:"Banyak brand makanan cepat saji memakai merah dan kuning. Alasan psikologis yang paling masuk akal adalah...",o:["Keduanya warna paling murah untuk dicetak","Keduanya adalah warna netral","Merah dikaitkan dengan energi dan selera, kuning dengan perhatian dan keceriaan, sehingga cocok untuk keputusan cepat","Keduanya memberi kesan mewah dan eksklusif"],a:2,e:"Asosiasi warna memengaruhi emosi dan perilaku. Merah dan kuning mendorong energi, perhatian, dan nafsu makan."},
-{q:"Sebuah brand akan masuk pasar internasional. Warna putih bermakna suci di satu negara, tetapi bermakna duka di negara lain. Langkah desainer yang paling tepat adalah...",o:["Memakai satu warna yang sama di semua negara tanpa riset","Meriset makna budaya warna di tiap pasar target lalu menyesuaikan penerapannya","Menghindari semua warna","Mengikuti selera pribadi desainer"],a:1,e:"Makna warna dipengaruhi budaya. Riset sebelum meluncur mencegah salah pesan."},
-{q:"Pada aturan 60-30-10, tombol ajakan bertindak (CTA) pada sebuah antarmuka diberi warna aksen yang porsinya sekitar 10%. Alasannya adalah...",o:["Agar halaman tampak penuh warna","Agar seluruh elemen punya bobot yang sama","Agar warna dominan tidak perlu dipakai","Porsi kecil dengan warna kontras membuat elemen terpenting menonjol dan langsung menarik perhatian"],a:3,e:"Warna aksen yang jarang dipakai menjadi penunjuk perhatian. Jika dipakai di mana-mana, efeknya hilang."},
-{q:"Sebuah kafe ingin suasana hangat dan akrab lewat identitas visualnya. Pilihan warna dominan yang paling sesuai adalah...",o:["Oranye, cokelat, dan kuning hangat dengan sedikit aksen warna dingin","Biru es, abu dingin, dan putih terang","Ungu dan hijau neon","Hitam dan perak metalik"],a:0,e:"Warna hangat memberi kesan akrab dan dekat. Aksen dingin sedikit menambah keseimbangan."},
-{q:"Abu-abu yang sama tampak lebih terang di atas latar gelap dan lebih gelap di atas latar terang. Implikasi bagi desainer adalah...",o:["Persepsi warna tidak penting selama kode warnanya sama","Hanya terjadi pada layar lama","Warna dinilai dalam konteks sekitarnya, sehingga perlu diuji pada latar yang benar-benar dipakai","Latar harus selalu putih"],a:2,e:"Ini disebut kontras simultan. Warna yang sama bisa terlihat berbeda tergantung warna di sekelilingnya."},
-{q:"Pada logo FedEx, ada panah tersembunyi di ruang antara huruf E dan x. Prinsip desain yang dipakai adalah...",o:["Gradasi warna","Ruang negatif (figure-ground), yaitu makna tambahan muncul dari ruang kosong tanpa menambah elemen","Bayangan tiga dimensi","Pengulangan pola"],a:1,e:"Ruang negatif membuat logo menyimpan makna kedua (kecepatan dan arah) sambil tetap sederhana."},
-{q:"Sebuah komunitas ingin logo yang menyampaikan kebersamaan dan kesinambungan tanpa awal dan akhir. Bentuk dasar yang paling tepat adalah...",o:["Segitiga runcing ke atas","Persegi dengan sudut tajam","Garis zig-zag","Lingkaran, yang lazim diasosiasikan dengan kesatuan, komunitas, dan keabadian"],a:3,e:"Lingkaran tidak punya sudut dan tidak berujung, sehingga sering dimaknai sebagai kesatuan dan siklus."},
-{q:"Sebuah startup punya nama sangat panjang, tetapi harus dikenali pada ikon aplikasi yang kecil. Pendekatan logo yang paling tepat adalah...",o:["Lettermark atau monogram dari inisial, dipadukan dengan wordmark penuh untuk versi besar","Menaruh nama lengkap dalam satu baris pada ikon","Memakai foto tim","Memakai ilustrasi detail dengan banyak elemen"],a:0,e:"Monogram ringkas dan terbaca pada ukuran kecil, sementara wordmark menjaga nama lengkap tetap dikenal."},
-{q:"Seorang konsultan berpendapat bahwa logo tidak harus menggambarkan isi bisnis secara harfiah, misalnya toko roti tidak wajib memakai gambar roti. Alasan yang paling tepat adalah...",o:["Gambar harfiah selalu melanggar hak cipta","Logo hanya dibuat dari huruf","Logo berfungsi sebagai penanda yang maknanya dibangun lewat pengalaman konsisten pada brand, sehingga kekhasan lebih penting daripada ilustrasi literal","Logo tidak perlu dipikirkan, karena hanya hiasan"],a:2,e:"Makna logo tumbuh dari kualitas dan pengalaman terhadap brand. Simbol yang khas lebih mudah diingat daripada gambar yang generik."},
-{q:"Sebuah bank lama merombak total logonya menjadi sangat modern. Nasabah lama justru kehilangan rasa percaya. Pendekatan rebranding yang lebih tepat adalah...",o:["Mengganti total agar terlihat baru","Evolusi bertahap: mempertahankan ekuitas visual seperti warna atau bentuk kunci, lalu menyederhanakannya","Tidak pernah mengubah logo selamanya","Mengganti nama bank saja"],a:1,e:"Ekuitas visual adalah modal pengenalan brand. Perubahan bertahap menjaga kepercayaan sambil tetap menyegarkan tampilan."},
-{q:"Logo dengan tujuh warna gradasi menjadi tidak terbaca saat difotokopi hitam putih. Prinsip logo yang dilanggar adalah...",o:["Orisinalitas","Keterbacaan huruf","Kesesuaian dengan target pasar","Fleksibilitas (versatility): logo harus tetap efektif dalam versi satu warna atau hitam putih"],a:3,e:"Logo yang baik diuji pada berbagai media dan harus tetap berfungsi tanpa warna penuh."},
-{q:"Logo rumah sakit memakai merah menyala dan bentuk-bentuk runcing, sehingga pasien merasa cemas. Evaluasi yang paling tepat adalah...",o:["Karakter visual tidak sesuai dengan nilai brand (kenyamanan dan kepercayaan); sebaiknya pakai warna lembut dan bentuk membulat","Logo sudah tepat karena menarik perhatian","Masalahnya hanya pada ukuran logo","Cukup mengganti font menjadi lebih tebal"],a:0,e:"Logo harus sesuai (appropriate) dengan karakter dan nilai yang diwakilinya. Warna dan bentuk memengaruhi rasa yang muncul."},
-{q:"Sebuah komunitas batik ingin logo yang membawa filosofi budaya lokal. Pendekatan yang paling etis dan tepat adalah...",o:["Menyalin motif tradisional tanpa mengubah apa pun","Memakai motif sakral agar terlihat berwibawa","Meriset makna motif, melibatkan komunitas, dan menyederhanakannya tanpa menghilangkan makna","Memilih motif secara acak yang paling cantik"],a:2,e:"Simbol budaya punya makna dan konteks. Riset dan keterlibatan pemilik budaya menjaga logo tetap hormat dan bermakna."},
-{q:"Klien menganggap logo baru otomatis menyelesaikan seluruh citra brand-nya. Tanggapan desainer yang paling tepat adalah...",o:["Setuju, karena logo adalah satu-satunya elemen brand","Menjelaskan bahwa logo hanya satu elemen; identitas visual membutuhkan sistem warna, tipografi, gaya komunikasi, dan penerapan yang konsisten","Menolak mengerjakan proyek","Menyarankan mengganti logo setiap bulan"],a:1,e:"Citra brand dibangun dari keseluruhan sistem identitas yang konsisten, bukan dari logo saja."},
-{q:"Sebuah kantor hukum ingin logo berbasis teks (wordmark) yang menyampaikan kesan kokoh, formal, dan tepercaya. Pilihan huruf dan warna yang paling sesuai adalah...",o:["Huruf script dekoratif dengan warna pink","Huruf bergaya grafiti dengan warna neon","Huruf berbentuk gelembung dengan warna pastel","Huruf serif tegas atau sans-serif geometris tebal dengan biru tua atau hitam"],a:3,e:"Bentuk huruf dan warna membawa kepribadian. Serif tegas dan biru tua dikaitkan dengan otoritas dan kepercayaan."}
+{q:"Desainer ingin poster dengan kontras kuat agar elemen utamanya langsung menonjol. Pasangan warna yang paling tepat adalah...",o:["Biru dan hijau","Biru dan oranye","Merah dan magenta","Kuning dan hijau kekuningan"]},
+{q:"Brand spa ingin tampilan yang harmonis, menenangkan, dan tidak mencolok. Skema warna yang paling sesuai adalah...",o:["Triadik merah, kuning, biru dengan saturasi penuh","Komplementer merah dan hijau yang jenuh","Analogus dengan saturasi lembut, misalnya hijau, hijau kebiruan, dan biru","Hitam putih dengan aksen neon"]},
+{q:"Warna di layar HP tampak lebih cerah dan hidup daripada hasil cetaknya. Penjelasan teorinya adalah...",o:["Layar memancarkan cahaya (RGB, aditif), sedangkan cetak memantulkan cahaya dan menyerap sebagian (CMYK, subtraktif)","Kertas cetak selalu salah kalibrasi","Layar memakai tinta lebih banyak","Warna cetak tidak punya hue"]},
+{q:"Pada model HSB, desainer menurunkan saturation sebuah warna tanpa mengubah hue dan brightness. Hasilnya adalah...",o:["Warna menjadi lebih gelap","Warna berganti menjadi hue lain","Warna berubah menjadi putih","Warna tampak lebih pudar mendekati abu-abu, tetapi hue-nya tetap sama"]},
+{q:"Teks abu muda pada latar putih sulit dibaca. Solusi yang paling tepat menurut prinsip kontras dan aksesibilitas adalah...",o:["Menaikkan kontras luminansi teks terhadap latar (rasio minimal sekitar 4,5 banding 1)","Mengganti hue teks menjadi merah dengan kecerahan yang sama","Menambah efek bayangan tipis","Memperkecil ukuran teks"]},
+{q:"Banyak brand makanan cepat saji memakai merah dan kuning. Alasan psikologis yang paling masuk akal adalah...",o:["Keduanya warna paling murah untuk dicetak","Keduanya adalah warna netral","Merah dikaitkan dengan energi dan selera, kuning dengan perhatian dan keceriaan, sehingga cocok untuk keputusan cepat","Keduanya memberi kesan mewah dan eksklusif"]},
+{q:"Sebuah brand akan masuk pasar internasional. Warna putih bermakna suci di satu negara, tetapi bermakna duka di negara lain. Langkah desainer yang paling tepat adalah...",o:["Memakai satu warna yang sama di semua negara tanpa riset","Meriset makna budaya warna di tiap pasar target lalu menyesuaikan penerapannya","Menghindari semua warna","Mengikuti selera pribadi desainer"]},
+{q:"Pada aturan 60-30-10, tombol ajakan bertindak (CTA) pada sebuah antarmuka diberi warna aksen yang porsinya sekitar 10%. Alasannya adalah...",o:["Agar halaman tampak penuh warna","Agar seluruh elemen punya bobot yang sama","Agar warna dominan tidak perlu dipakai","Porsi kecil dengan warna kontras membuat elemen terpenting menonjol dan langsung menarik perhatian"]},
+{q:"Sebuah kafe ingin suasana hangat dan akrab lewat identitas visualnya. Pilihan warna dominan yang paling sesuai adalah...",o:["Oranye, cokelat, dan kuning hangat dengan sedikit aksen warna dingin","Biru es, abu dingin, dan putih terang","Ungu dan hijau neon","Hitam dan perak metalik"]},
+{q:"Abu-abu yang sama tampak lebih terang di atas latar gelap dan lebih gelap di atas latar terang. Implikasi bagi desainer adalah...",o:["Persepsi warna tidak penting selama kode warnanya sama","Hanya terjadi pada layar lama","Warna dinilai dalam konteks sekitarnya, sehingga perlu diuji pada latar yang benar-benar dipakai","Latar harus selalu putih"]},
+{q:"Pada logo FedEx, ada panah tersembunyi di ruang antara huruf E dan x. Prinsip desain yang dipakai adalah...",o:["Gradasi warna","Ruang negatif (figure-ground), yaitu makna tambahan muncul dari ruang kosong tanpa menambah elemen","Bayangan tiga dimensi","Pengulangan pola"]},
+{q:"Sebuah komunitas ingin logo yang menyampaikan kebersamaan dan kesinambungan tanpa awal dan akhir. Bentuk dasar yang paling tepat adalah...",o:["Segitiga runcing ke atas","Persegi dengan sudut tajam","Garis zig-zag","Lingkaran, yang lazim diasosiasikan dengan kesatuan, komunitas, dan keabadian"]},
+{q:"Sebuah startup punya nama sangat panjang, tetapi harus dikenali pada ikon aplikasi yang kecil. Pendekatan logo yang paling tepat adalah...",o:["Lettermark atau monogram dari inisial, dipadukan dengan wordmark penuh untuk versi besar","Menaruh nama lengkap dalam satu baris pada ikon","Memakai foto tim","Memakai ilustrasi detail dengan banyak elemen"]},
+{q:"Seorang konsultan berpendapat bahwa logo tidak harus menggambarkan isi bisnis secara harfiah, misalnya toko roti tidak wajib memakai gambar roti. Alasan yang paling tepat adalah...",o:["Gambar harfiah selalu melanggar hak cipta","Logo hanya dibuat dari huruf","Logo berfungsi sebagai penanda yang maknanya dibangun lewat pengalaman konsisten pada brand, sehingga kekhasan lebih penting daripada ilustrasi literal","Logo tidak perlu dipikirkan, karena hanya hiasan"]},
+{q:"Sebuah bank lama merombak total logonya menjadi sangat modern. Nasabah lama justru kehilangan rasa percaya. Pendekatan rebranding yang lebih tepat adalah...",o:["Mengganti total agar terlihat baru","Evolusi bertahap: mempertahankan ekuitas visual seperti warna atau bentuk kunci, lalu menyederhanakannya","Tidak pernah mengubah logo selamanya","Mengganti nama bank saja"]},
+{q:"Logo dengan tujuh warna gradasi menjadi tidak terbaca saat difotokopi hitam putih. Prinsip logo yang dilanggar adalah...",o:["Orisinalitas","Keterbacaan huruf","Kesesuaian dengan target pasar","Fleksibilitas (versatility): logo harus tetap efektif dalam versi satu warna atau hitam putih"]},
+{q:"Logo rumah sakit memakai merah menyala dan bentuk-bentuk runcing, sehingga pasien merasa cemas. Evaluasi yang paling tepat adalah...",o:["Karakter visual tidak sesuai dengan nilai brand (kenyamanan dan kepercayaan); sebaiknya pakai warna lembut dan bentuk membulat","Logo sudah tepat karena menarik perhatian","Masalahnya hanya pada ukuran logo","Cukup mengganti font menjadi lebih tebal"]},
+{q:"Sebuah komunitas batik ingin logo yang membawa filosofi budaya lokal. Pendekatan yang paling etis dan tepat adalah...",o:["Menyalin motif tradisional tanpa mengubah apa pun","Memakai motif sakral agar terlihat berwibawa","Meriset makna motif, melibatkan komunitas, dan menyederhanakannya tanpa menghilangkan makna","Memilih motif secara acak yang paling cantik"]},
+{q:"Klien menganggap logo baru otomatis menyelesaikan seluruh citra brand-nya. Tanggapan desainer yang paling tepat adalah...",o:["Setuju, karena logo adalah satu-satunya elemen brand","Menjelaskan bahwa logo hanya satu elemen; identitas visual membutuhkan sistem warna, tipografi, gaya komunikasi, dan penerapan yang konsisten","Menolak mengerjakan proyek","Menyarankan mengganti logo setiap bulan"]},
+{q:"Sebuah kantor hukum ingin logo berbasis teks (wordmark) yang menyampaikan kesan kokoh, formal, dan tepercaya. Pilihan huruf dan warna yang paling sesuai adalah...",o:["Huruf script dekoratif dengan warna pink","Huruf bergaya grafiti dengan warna neon","Huruf berbentuk gelembung dengan warna pastel","Huruf serif tegas atau sans-serif geometris tebal dengan biru tua atau hitam"]}
+,
+{q:"Poster berlatar biru tua dengan teks kuning cerah sangat mudah dibaca dari jauh. Faktor teori warna yang paling menjelaskannya adalah...",o:["Biru dan kuning berseberangan di roda warna dan perbedaan terang-gelapnya besar","Kuning selalu terbaca di semua latar","Biru termasuk warna netral","Ukuran poster yang besar"]},
+{q:"Logo mainan anak memakai skema triadik dengan tiga warna jenuh penuh dalam porsi sama besar. Risiko utamanya adalah...",o:["Tampilan terlalu ramai dan tidak ada titik fokus, sehingga perlu satu warna dominan","Warna otomatis memudar saat dicetak","Logo tidak terbaca di layar","Logo tidak bisa dicetak"]},
+{q:"Aplikasi keuangan memakai skema monokromatik biru. Keuntungan terbesarnya adalah...",o:["Tampilan kohesif dan tenang, dengan hierarki dibangun lewat variasi terang-gelap dan saturasi","Semua elemen menjadi sama penting","Kontras tidak perlu dipikirkan lagi","Selalu lebih menarik daripada skema lain"]},
+{q:"Desainer ingin latar terasa mundur dan objek utama terasa maju ke depan. Pilihan warna yang tepat adalah...",o:["Warna dingin yang kurang jenuh untuk latar, warna hangat yang jenuh untuk objek utama","Warna hangat jenuh untuk latar, warna dingin untuk objek","Semua elemen dengan saturasi sama","Hanya hitam dan putih"]},
+{q:"Aplikasi memakai merah untuk pesan error dan hijau untuk pesan sukses. Masalah aksesibilitas yang perlu diantisipasi adalah...",o:["Pengguna buta warna merah-hijau, sehingga perlu ikon atau teks pendamping","Merah tidak terbaca di layar","Hijau tidak boleh dipakai di UI","Tidak ada masalah apa pun"]},
+{q:"Foto produk makanan tampak kebiruan dan tidak menggugah selera. Perbaikan yang paling tepat adalah...",o:["Menggeser white balance ke arah hangat","Menurunkan resolusi foto","Mengubah format file ke PNG","Memperkecil ukuran foto"]},
+{q:"Pada praktik cetak, tinta magenta dan kuning dicampur dan menghasilkan merah. Prinsip pencampuran yang berlaku adalah...",o:["Subtraktif, karena tiap tinta menyerap sebagian cahaya","Aditif, karena tiap tinta memancarkan cahaya","Campuran tidak mengikuti teori warna","Hanya berlaku pada layar"]},
+{q:"Pada roda warna, warna tersier dihasilkan dari...",o:["Campuran satu warna primer dan satu warna sekunder yang bersebelahan","Campuran dua warna primer","Campuran tiga warna sekunder","Penambahan hitam pada warna primer"]},
+{q:"Desainer menambahkan abu-abu netral ke merah murni untuk mendapat palet yang lebih kalem. Hasilnya disebut dan efeknya adalah...",o:["Tone; saturasi turun dengan hue tetap","Tint; warna menjadi lebih gelap","Shade; warna menjadi lebih terang","Hue baru yang berbeda total"]},
+{q:"Sebuah bank ingin kesan stabil dan tepercaya, tetapi kompetitornya sudah memakai biru. Strategi yang paling tepat adalah...",o:["Tetap di keluarga biru, tetapi pilih nuansa dan aksen khas, misalnya biru kehijauan dengan aksen emas","Beralih ke merah neon","Memakai seluruh warna pelangi","Meniru biru kompetitor persis"]},
+{q:"Dashboard data memiliki lima kategori pada grafik. Pendekatan warna yang paling tepat adalah...",o:["Warna yang mudah dibedakan dengan kontras cukup, ditambah label atau pola agar tidak bergantung pada warna saja","Lima nuansa yang hampir sama","Gradasi pelangi acak","Satu warna untuk semua"]},
+{q:"Spanduk di luar ruangan harus terbaca dari jauh di bawah sinar matahari. Kombinasi yang paling efektif adalah...",o:["Teks hitam di atas latar kuning","Teks kuning di atas latar putih","Teks abu muda di atas latar putih","Teks merah di atas latar hijau yang sama terang"]},
+{q:"Pada mode gelap, teks putih murni di atas latar hitam murni terasa melelahkan mata. Penyesuaian yang tepat adalah...",o:["Latar abu sangat gelap dan teks putih yang sedikit diredam, dengan kontras tetap memadai","Teks dibuat putih lebih terang","Teks dibuat merah","Latar dihilangkan"]},
+{q:"Lingkaran kuning di atas latar ungu tampak lebih bersinar dibanding di atas latar putih. Teori yang menjelaskannya adalah...",o:["Pasangan komplementer saling menguatkan intensitas","Kedua warna saling menetralkan menjadi abu","Efek kualitas kertas","Kesalahan gamut cetak"]},
+{q:"Banyak brand memakai hijau untuk citra ramah lingkungan sehingga terkesan klise. Strategi yang lebih tepat adalah...",o:["Memperkuat pesan dan bukti nyata lewat visual khas, bukan hanya mengandalkan warna hijau","Memakai hijau yang lebih terang","Menghindari semua warna","Mengganti dengan logo daun saja"]},
+{q:"Panah pada logo Amazon menghubungkan huruf A ke Z dan membentuk senyum. Makna ganda yang paling tepat adalah...",o:["Jangkauan produk yang lengkap dan kepuasan pelanggan dalam satu elemen sederhana","Penanda lokasi kantor","Sekadar hiasan","Tanda hak cipta"]},
+{q:"Logo bertipe emblem (lencana) paling cocok dipakai oleh...",o:["Institusi dengan citra tradisional dan formal, misalnya universitas","Aplikasi dengan ikon sangat kecil","Brand yang sering berganti identitas","Brand yang hanya tampil di layar"]},
+{q:"Keunggulan utama logo kombinasi (simbol dan teks) adalah...",o:["Bisa dipakai terpisah atau digabung sesuai kebutuhan media","Selalu lebih murah dibuat","Tidak membutuhkan guideline","Hanya cocok untuk media cetak"]},
+{q:"Logo dengan garis sangat tipis menghilang saat diterapkan pada bordir seragam. Pelajaran yang tepat adalah...",o:["Tentukan ketebalan minimum dan uji logo pada skala dan media produksi sebenarnya","Tambahkan efek bayangan","Tambahkan gradasi","Tambah jumlah warna"]},
+{q:"Logo klinik gigi anak memakai gigi tersenyum dengan sudut membulat. Alasan bentuk membulat yang paling tepat adalah...",o:["Bentuk membulat diasosiasikan dengan keramahan dan rasa aman","Bentuk membulat lebih murah dicetak","Sudut tajam tidak bisa dicetak","Agar tidak terlihat seperti gigi"]},
+{q:"Logo sebuah startup sangat mirip dengan logo perusahaan besar. Risiko yang paling nyata adalah...",o:["Kehilangan keunikan dan berpotensi sengketa merek","Hanya masalah warna","Tidak ada risiko","Logo menjadi lebih mudah diingat"]},
+{q:"Logo harus tetap dikenali pada ukuran favicon 16 piksel. Cara uji yang paling tepat adalah...",o:["Memperkecil logo dan memeriksa apakah bentuk serta makna utamanya masih terbaca","Memperbesar logo sampai 400%","Menambah detail agar lebih jelas","Mengubahnya menjadi tiga dimensi"]},
+{q:"Logo yang bergantung pada efek glossy tiga dimensi tren sesaat terlihat usang beberapa tahun kemudian. Prinsip logo yang dilanggar adalah...",o:["Ketahanan waktu (timeless)","Kesesuaian warna","Kejelasan nama brand","Ukuran file"]},
+{q:"Agar proporsi simbol dan teks pada logo kombinasi tetap terjaga oleh banyak pihak, hal yang paling tepat adalah...",o:["Menetapkan clear space dan ukuran minimum dalam brand guideline","Membiarkan tiap pemakai menyesuaikan sesuka hati","Mengubahnya setiap kampanye","Menghilangkan simbol pada versi kecil"]},
+{q:"Logo kedai kopi lokal berupa siluet biji kopi yang sekaligus membentuk gunung. Teknik yang dipakai adalah...",o:["Makna ganda dalam satu bentuk (dual image)","Gradasi warna","Pola berulang","Tipografi kinetik"]},
+{q:"Logo brand ramah lingkungan sudah berwarna hijau, tetapi simbolnya tidak berkaitan dengan nilai brand. Evaluasi yang tepat adalah...",o:["Warna sudah sesuai, tetapi simbol belum mewakili filosofi brand sehingga maknanya perlu diselaraskan","Sudah sempurna","Cukup mengganti font","Cukup menambah slogan"]},
+{q:"Pada logo bernama Nusa, huruf N diubah menjadi bentuk perahu. Risiko utama jika huruf terlalu banyak diubah adalah...",o:["Keterbacaan nama menurun","Warna memudar","Resolusi turun","Ukuran file membesar"]},
+{q:"Logo organisasi nirlaba berupa dua tangan bergandengan. Kelemahan konsep ini yang paling mungkin adalah...",o:["Klise, sehingga kurang khas dan mudah tertukar dengan organisasi lain","Tidak bisa dicetak","Terlalu rumit","Selalu melanggar hak cipta"]},
+{q:"Tahap riset yang paling penting sebelum mulai mendesain logo adalah...",o:["Memahami nilai, audiens, dan posisi kompetitor brand","Memilih font","Memilih warna favorit","Membuat mockup kaus"]},
+{q:"Cara paling meyakinkan saat mempresentasikan logo kepada klien adalah...",o:["Menjelaskan alasan filosofi dan strategi di balik bentuk dan warna, lalu menunjukkan penerapan pada media nyata","Hanya menunjukkan file logo","Memberikan 20 variasi tanpa penjelasan","Mengatakan bahwa logonya bagus"]}
 ];
-const L="ABCD",app=document.getElementById("app");
-let name="",i=0,ans=Array(Q.length).fill(-1),done=false;
+const K=atob("MTIwMzAyMTMwMjEzMDIxMzAyMTMwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=");
+const L="ABCD",N=Q.length,app=document.getElementById("app");
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let name="",i=0,ord=[],perm=[],ans=[];
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const strip='<div class="cmyk"><i></i><i></i><i></i><i></i></div>';
 const COL=["var(--c)","var(--m)","var(--y)","var(--fg)"];
 const answered=()=>ans.filter(x=>x>=0).length;
+function init(){ord=sh([...Q.keys()]);perm=ord.map(()=>sh([0,1,2,3]));ans=Array(N).fill(-1);i=0}
 function start(){
   app.innerHTML=strip+`<h1>Teori Warna &amp; Filosofi Logo</h1>
   <p>Kuis HOTS persiapan TKA SMK DKV kelas 12.</p>
-  <p class="mute">20 soal pilihan ganda. Soal menuntut analisis dan pengambilan keputusan, bukan hafalan. Jawaban bisa diubah sebelum dikumpulkan.</p>
+  <p class="mute">${N} soal pilihan ganda berbasis analisis kasus. Urutan soal dan pilihan jawaban diacak untuk tiap siswa. Di akhir kamu hanya melihat nilai dan status benar atau salah tiap soal, tanpa kunci jawaban.</p>
   <label for="n">Nama lengkap</label>
   <input id="n" type="text" autocomplete="name" placeholder="Tulis namamu di sini">
   <div class="row"><button class="btn" id="go" disabled>Mulai kuis</button></div>`;
   const n=document.getElementById("n"),g=document.getElementById("go");
   n.oninput=()=>{g.disabled=n.value.trim().length<2};
-  g.onclick=()=>{name=n.value.trim();i=0;quiz()};
+  g.onclick=()=>{name=n.value.trim();init();quiz()};
   n.onkeydown=e=>{if(e.key==="Enter"&&!g.disabled)g.click()};
 }
 function quiz(){
-  const q=Q[i];
+  const q=Q[ord[i]],p=perm[i];
   const bar=Q.map((_,k)=>`<button aria-label="Soal ${k+1}" data-k="${k}" class="${k===i?"cur":""}" style="${ans[k]>=0?"background:"+COL[k%4]:""}"></button>`).join("");
-  app.innerHTML=strip+`<div class="meta"><span>${esc(name)}</span><span>Terjawab ${answered()}/${Q.length}</span></div>
+  app.innerHTML=strip+`<div class="meta"><span>${esc(name)}</span><span>Terjawab ${answered()}/${N}</span></div>
   <div class="bar">${bar}</div>
-  <div class="meta"><span>Soal ${i+1} dari ${Q.length}</span></div>
+  <div class="meta"><span>Soal ${i+1} dari ${N}</span></div>
   <p class="q">${q.q}</p>
-  ${q.o.map((t,k)=>`<button class="opt ${ans[i]===k?"sel":""}" data-o="${k}"><b>${L[k]}</b><span>${t}</span></button>`).join("")}
+  ${p.map((oi,k)=>`<button class="opt ${ans[i]===k?"sel":""}" data-o="${k}"><b>${L[k]}</b><span>${q.o[oi]}</span></button>`).join("")}
   <div class="row"><button class="btn alt" id="pv" ${i===0?"disabled":""}>Sebelumnya</button>
-  ${i<Q.length-1?'<button class="btn" id="nx">Berikutnya</button>':'<button class="btn" id="fin">Kumpulkan</button>'}</div>`;
+  ${i<N-1?'<button class="btn" id="nx">Berikutnya</button>':'<button class="btn" id="fin">Kumpulkan</button>'}</div>`;
   app.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ans[i]=+b.dataset.o;quiz()});
-  app.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{i=+b.dataset.k;quiz()});
+  app.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{i=+b.dataset.k;quiz();scrollTo(0,0)});
   document.getElementById("pv").onclick=()=>{i--;quiz();scrollTo(0,0)};
   const nx=document.getElementById("nx");if(nx)nx.onclick=()=>{i++;quiz();scrollTo(0,0)};
   const f=document.getElementById("fin");if(f)f.onclick=()=>{
-    const left=Q.length-answered();
-    if(left>0&&!confirm(left+" soal belum dijawab. Tetap kumpulkan?"))return;
+    const left=N-answered();
+    if(!confirm(left>0?left+" soal belum dijawab. Kumpulkan sekarang? Jawaban tidak bisa diubah lagi.":"Kumpulkan jawaban sekarang? Jawaban tidak bisa diubah lagi."))return;
     result();scrollTo(0,0)};
 }
 function result(){
-  const s=ans.reduce((t,x,k)=>t+(x===Q[k].a?1:0),0),nilai=s*5;
-  const msg=nilai>=80?"Kamu sudah siap. Pertahankan dan tetap latihan.":nilai>=60?"Cukup baik. Pelajari lagi soal yang salah di bawah.":"Masih perlu belajar. Baca pembahasan di bawah lalu coba lagi.";
-  const rv=Q.map((q,k)=>{
-    const ok=ans[k]===q.a;
-    return `<div class="rv"><span class="tag" style="color:var(${ok?"--ok":"--no"})">${ok?"Benar":ans[k]<0?"Tidak dijawab":"Salah"}</span> &middot; Soal ${k+1}
-    <p class="q" style="font-size:1rem;margin:6px 0 10px">${q.q}</p>
-    ${q.o.map((t,j)=>`<div class="opt ${j===q.a?"right":j===ans[k]?"wrong":""}"><b>${L[j]}</b><span>${t}</span></div>`).join("")}
-    <div class="e">${q.e}</div></div>`}).join("");
+  const ok=ans.map((x,d)=>x>=0&&perm[d][x]===+K[ord[d]]);
+  const s=ok.filter(Boolean).length,nilai=s*2;
+  const msg=nilai>=80?"Hasil yang sangat baik. Pertahankan.":nilai>=60?"Cukup baik. Pelajari lagi materi pada soal yang salah.":"Masih perlu belajar. Ulangi materi teori warna dan filosofi logo.";
+  const chips=ok.map((v,d)=>`<div class="chip ${v?"ok":"no"}"><span>Soal ${d+1}</span><b style="color:var(${v?"--ok":"--no"})">${v?"Benar":"Salah"}</b></div>`).join("");
   app.innerHTML=strip+`<p class="mute">${esc(name)}</p><h1>Hasil kuis</h1>
   <div class="score">${nilai}</div>
-  <p><b>${s} dari ${Q.length}</b> soal benar. ${msg}</p>
-  <div class="row"><button class="btn" id="cp">Salin hasil</button><button class="btn alt" id="rt">Ulangi</button></div>
+  <p><b>${s} dari ${N}</b> soal benar. ${msg}</p>
+  <div class="row"><button class="btn" id="cp">Salin hasil</button></div>
   <p class="mute" id="cm" style="margin-top:10px">Tunjukkan layar ini atau kirim hasil salinan ke gurumu.</p>
-  <h2 style="margin:26px 0 12px;font-size:1.3rem">Pembahasan</h2>${rv}`;
-  document.getElementById("rt").onclick=()=>{ans.fill(-1);i=0;start()};
+  <h2 style="margin:24px 0 12px;font-size:1.3rem">Status per soal</h2><div class="chips">${chips}</div>`;
   document.getElementById("cp").onclick=async()=>{
-    const t=`Kuis HOTS DKV: Teori Warna dan Filosofi Logo\nNama: ${name}\nNilai: ${nilai} (${s}/${Q.length} benar)\nJawaban: ${ans.map((x,k)=>(k+1)+(x>=0?L[x]:"-")).join(" ")}`;
+    const salah=ok.map((v,d)=>v?null:d+1).filter(Boolean);
+    const t=`Kuis HOTS DKV: Teori Warna dan Filosofi Logo\nNama: ${name}\nNilai: ${nilai} (${s}/${N} benar)\nSoal salah: ${salah.length?salah.join(", "):"tidak ada"}`;
     try{await navigator.clipboard.writeText(t);document.getElementById("cm").textContent="Hasil tersalin. Tempel di chat gurumu."}
     catch(e){document.getElementById("cm").textContent="Gagal menyalin. Screenshot layar ini saja."}
   };
